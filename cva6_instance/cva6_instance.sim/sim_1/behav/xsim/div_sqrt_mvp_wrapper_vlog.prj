@@ -1,0 +1,18 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib "/home/bred/projects/embedded-systems-project-2024/cva6/vendor/pulp-platform/common_cells/include/common_cells/registers.svh" -i "../../../../../cva6/core/include" -i "../../../../../cva6/vendor/pulp-platform/common_cells/include" -i "../../../../../cva6/vendor/pulp-platform/axi/include" -i "../../../../../cva6/common/local/util" -i "../../../../../cva6/core/cache_subsystem/hpdcache/rtl/include" --include "../../../../../cva6/vendor/pulp-platform/common_cells/include/common_cells" --include "../../../../../cva6/core/cache_subsystem/hpdcache/rtl/include" --include "../../../../../cva6/core/include" --include "../../../../../cva6/common/local/util" \
+"../../../../../cva6/vendor/pulp-platform/common_cells/src/cf_math_pkg.sv" \
+"../../../../../cva6/vendor/openhwgroup/cvfpu/src/fpu_div_sqrt_mvp/hdl/defs_div_sqrt_mvp.sv" \
+"../../../../../cva6/vendor/openhwgroup/cvfpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv" \
+"../../../../../cva6/vendor/openhwgroup/cvfpu/src/fpu_div_sqrt_mvp/hdl/div_sqrt_top_mvp.sv" \
+"../../../../../cva6/vendor/openhwgroup/cvfpu/src/fpu_div_sqrt_mvp/hdl/iteration_div_sqrt_mvp.sv" \
+"../../../../../cva6/vendor/pulp-platform/common_cells/src/lzc.sv" \
+"../../../../../cva6/vendor/openhwgroup/cvfpu/src/fpu_div_sqrt_mvp/hdl/norm_div_sqrt_mvp.sv" \
+"../../../../../cva6/vendor/openhwgroup/cvfpu/src/fpu_div_sqrt_mvp/hdl/nrbd_nrsc_mvp.sv" \
+"../../../../../cva6/vendor/openhwgroup/cvfpu/src/fpu_div_sqrt_mvp/hdl/preprocess_mvp.sv" \
+"../../../../../cva6/vendor/openhwgroup/cvfpu/src/fpu_div_sqrt_mvp/hdl/div_sqrt_mvp_wrapper.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
