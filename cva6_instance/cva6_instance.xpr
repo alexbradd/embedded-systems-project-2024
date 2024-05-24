@@ -8,7 +8,7 @@
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="d1f732ded6ce4b2d840dbf8c766be98b"/>
-    <Option Name="Part" Val="xc7a35tcpg236-1"/>
+    <Option Name="Part" Val="xc7a35tcsg324-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
     <Option Name="CompiledLibDirModelSim" Val="$PCACHEDIR/compile_simlib/modelsim"/>
@@ -46,7 +46,6 @@
     <Option Name="SimulatorLanguage" Val="Verilog"/>
     <Option Name="BoardPart" Val=""/>
     <Option Name="BoardPartRepoPaths" Val="$PPRDIR/../../../.Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store"/>
-    <Option Name="SourceMgmtMode" Val="DisplayOnly"/>
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
@@ -69,13 +68,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="4"/>
-    <Option Name="WTModelSimExportSim" Val="4"/>
-    <Option Name="WTQuestaExportSim" Val="4"/>
+    <Option Name="WTXSimExportSim" Val="9"/>
+    <Option Name="WTModelSimExportSim" Val="9"/>
+    <Option Name="WTQuestaExportSim" Val="9"/>
     <Option Name="WTIesExportSim" Val="0"/>
-    <Option Name="WTVcsExportSim" Val="4"/>
-    <Option Name="WTRivieraExportSim" Val="4"/>
-    <Option Name="WTActivehdlExportSim" Val="4"/>
+    <Option Name="WTVcsExportSim" Val="9"/>
+    <Option Name="WTRivieraExportSim" Val="9"/>
+    <Option Name="WTActivehdlExportSim" Val="9"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -280,13 +279,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../cva6/corev_apu/axi_mem_if/src/axi2mem.sv">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="simulation"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-        </FileInfo>
-      </File>
       <File Path="$PPRDIR/../cva6/core/cache_subsystem/axi_adapter.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -295,13 +287,6 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../cva6/vendor/pulp-platform/axi/src/axi_atop_filter.sv">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="simulation"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../cva6/vendor/pulp-platform/axi/src/axi_delayer.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="simulation"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -1134,13 +1119,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../cva6/vendor/pulp-platform/common_cells/src/lfsr_16bit.sv">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PPRDIR/../cva6/vendor/pulp-platform/common_cells/src/lfsr_8bit.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -1365,13 +1343,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../cva6/vendor/pulp-platform/common_cells/src/stream_delay.sv">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PPRDIR/../cva6/vendor/pulp-platform/common_cells/src/stream_demux.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -1391,6 +1362,13 @@
           <Attr Name="UsedIn" Val="simulation"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/synth_harness_axi_pkg.sv">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../cva6/core/cache_subsystem/tag_cmp.sv">
@@ -1467,14 +1445,54 @@
           <Attr Name="UsedIn" Val="synthesis"/>
         </FileInfo>
       </File>
+      <File Path="$PPRDIR/../cva6/corev_apu/axi_mem_if/src/axi2mem.sv">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../cva6/vendor/pulp-platform/axi/src/axi_delayer.sv">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../cva6/vendor/pulp-platform/common_cells/src/lfsr_16bit.sv">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../cva6/vendor/pulp-platform/common_cells/src/stream_delay.sv">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/ip/xlnx_axi_quad_spi/xlnx_axi_quad_spi.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/ip/xlnx_axi_clock_converter/xlnx_axi_clock_converter.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/ip/mig_7_ddr3/mig_a.prj">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="ScopedToCell" Val="mig_7_ddr3"/>
         </FileInfo>
       </File>
       <Config>
@@ -1491,9 +1509,14 @@
     </FileSet>
     <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
       <Filter Type="Constrs"/>
-      <File Path="$PSRCDIR/constrs_1/new/clock_and_rtc.xdc">
+      <File Path="$PSRCDIR/constrs_1/new/clock.xdc">
         <FileInfo>
-          <Attr Name="UserDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/constrs_1/new/reset.xdc">
+        <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
         </FileInfo>
@@ -1848,11 +1871,13 @@
       </File>
       <File Path="$PPRDIR/../cva6/corev_apu/rv_plic/rtl/rv_plic_reg_pkg.sv">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../cva6/corev_apu/tb/common/tb_dcache_pkg.sv">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -1860,11 +1885,13 @@
       </File>
       <File Path="$PPRDIR/../cva6/corev_apu/rv_plic/rtl/tlul_pkg.sv">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../cva6/core/cache_subsystem/hpdcache/rtl/include/hpdcache_typedef.svh">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
           <Attr Name="IsVisible" Val="1"/>
@@ -1872,35 +1899,41 @@
       </File>
       <File Path="$PPRDIR/../cva6/corev_apu/tb/common/assign.svh">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="simulation"/>
           <Attr Name="IsVisible" Val="1"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../cva6/corev_apu/tb/common/string_buffer.svh">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="simulation"/>
           <Attr Name="IsVisible" Val="1"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../cva6/corev_apu/tb/common/tb.svh">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="simulation"/>
           <Attr Name="IsVisible" Val="1"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../cva6/corev_apu/rv_plic/rtl/top_pkg.sv">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../cva6/corev_apu/riscv-dbg/debug_rom/debug_rom.h">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="simulation"/>
           <Attr Name="IsVisible" Val="1"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../cva6/corev_apu/riscv-dbg/debug_rom/debug_rom_one_scratch.h">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="simulation"/>
           <Attr Name="IsVisible" Val="1"/>
         </FileInfo>
@@ -1923,7 +1956,7 @@
     </FileSet>
     <FileSet Name="utils_1" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
       <Filter Type="Utils"/>
-      <File Path="$PSRCDIR/utils_1/imports/synth_1/cva6.dcp">
+      <File Path="$PSRCDIR/utils_1/imports/synth_1/synth_harness.dcp">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -1940,11 +1973,48 @@
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <Config>
         <Option Name="TopModule" Val="clk_wiz"/>
+        <Option Name="VerilogDir" Val="$PPRDIR/../cva6/core/include"/>
+        <Option Name="VerilogDir" Val="$PPRDIR/../cva6/vendor/pulp-platform/common_cells/include"/>
+        <Option Name="VerilogDir" Val="$PPRDIR/../cva6/vendor/pulp-platform/axi/include"/>
+        <Option Name="VerilogDir" Val="$PPRDIR/../cva6/common/local/util"/>
+        <Option Name="VerilogDir" Val="$PPRDIR/../cva6/core/cache_subsystem/hpdcache/rtl/include"/>
+        <Option Name="VerilogDir" Val="$PPRDIR/../cva6/vendor/pulp-platform/fpga-support/behav/common/include"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+        <Verilog_Define Name="FPGA_TARGET_XILINX" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="axi_clock_converter_ddr" Type="BlockSrcs" RelSrcDir="$PSRCDIR/axi_clock_converter_ddr" RelGenDir="$PGENDIR/axi_clock_converter_ddr">
+      <File Path="$PSRCDIR/sources_1/ip/axi_clock_converter_ddr/axi_clock_converter_ddr.xci">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+        </FileInfo>
+      </File>
+      <Config>
+        <Option Name="TopModule" Val="axi_clock_converter_ddr"/>
+        <Option Name="VerilogDir" Val="$PPRDIR/../cva6/core/include"/>
+        <Option Name="VerilogDir" Val="$PPRDIR/../cva6/vendor/pulp-platform/common_cells/include"/>
+        <Option Name="VerilogDir" Val="$PPRDIR/../cva6/vendor/pulp-platform/axi/include"/>
+        <Option Name="VerilogDir" Val="$PPRDIR/../cva6/common/local/util"/>
+        <Option Name="VerilogDir" Val="$PPRDIR/../cva6/core/cache_subsystem/hpdcache/rtl/include"/>
+        <Option Name="VerilogDir" Val="$PPRDIR/../cva6/vendor/pulp-platform/fpga-support/behav/common/include"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+        <Verilog_Define Name="FPGA_TARGET_XILINX" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="mig_7_ddr3" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mig_7_ddr3" RelGenDir="$PGENDIR/mig_7_ddr3">
+      <File Path="$PSRCDIR/sources_1/ip/mig_7_ddr3/mig_7_ddr3.xci">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+        </FileInfo>
+      </File>
+      <Config>
+        <Option Name="TopModule" Val="mig_7_ddr3"/>
         <Option Name="VerilogDir" Val="$PPRDIR/../cva6/core/include"/>
         <Option Name="VerilogDir" Val="$PPRDIR/../cva6/vendor/pulp-platform/common_cells/include"/>
         <Option Name="VerilogDir" Val="$PPRDIR/../cva6/vendor/pulp-platform/axi/include"/>
@@ -1978,9 +2048,11 @@
     </Simulator>
   </Simulators>
   <Runs Version="1" Minor="21">
-    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a35tcpg236-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="true" IncrementalCheckpoint="$PSRCDIR/utils_1/imports/synth_1/cva6.dcp" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/synth_1">
+    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a35tcsg324-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="true" IncrementalCheckpoint="$PSRCDIR/utils_1/imports/synth_1/synth_harness.dcp" WriteIncrSynthDcp="true" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -1988,9 +2060,11 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="clk_wiz_synth_1" Type="Ft3:Synth" SrcSet="clk_wiz" Part="xc7a35tcpg236-1" ConstrsSet="clk_wiz" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/clk_wiz_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/clk_wiz_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/clk_wiz_synth_1">
+    <Run Id="clk_wiz_synth_1" Type="Ft3:Synth" SrcSet="clk_wiz" Part="xc7a35tcsg324-1" ConstrsSet="clk_wiz" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/clk_wiz_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/clk_wiz_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/clk_wiz_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -1998,9 +2072,35 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_1" LaunchOptions="-jobs 8 " AutoRQSDir="$PSRCDIR/utils_1/imports/impl_1">
+    <Run Id="axi_clock_converter_ddr_synth_1" Type="Ft3:Synth" SrcSet="axi_clock_converter_ddr" Part="xc7a35tcsg324-1" ConstrsSet="axi_clock_converter_ddr" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/axi_clock_converter_ddr_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/axi_clock_converter_ddr_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/axi_clock_converter_ddr_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2023"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="mig_7_ddr3_synth_1" Type="Ft3:Synth" SrcSet="mig_7_ddr3" Part="xc7a35tcsg324-1" ConstrsSet="mig_7_ddr3" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mig_7_ddr3_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/mig_7_ddr3_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/mig_7_ddr3_synth_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2023"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcsg324-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_1" LaunchOptions="-jobs 8 " AutoRQSDir="$PSRCDIR/utils_1/imports/impl_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -2015,9 +2115,49 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="clk_wiz_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="clk_wiz" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="clk_wiz_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/clk_wiz_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/clk_wiz_impl_1">
+    <Run Id="clk_wiz_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcsg324-1" ConstrsSet="clk_wiz" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="clk_wiz_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/clk_wiz_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/clk_wiz_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2023"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="axi_clock_converter_ddr_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcsg324-1" ConstrsSet="axi_clock_converter_ddr" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="axi_clock_converter_ddr_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/axi_clock_converter_ddr_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/axi_clock_converter_ddr_impl_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2023"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="mig_7_ddr3_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcsg324-1" ConstrsSet="mig_7_ddr3" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mig_7_ddr3_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/mig_7_ddr3_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/mig_7_ddr3_impl_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
