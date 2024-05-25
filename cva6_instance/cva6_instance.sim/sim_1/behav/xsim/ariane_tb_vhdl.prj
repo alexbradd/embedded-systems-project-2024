@@ -1,0 +1,17 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../cva6/corev_apu/fpga/src/apb_uart/src/apb_uart.vhd" \
+"../../../../../cva6/corev_apu/fpga/src/apb_uart/src/slib_clock_div.vhd" \
+"../../../../../cva6/corev_apu/fpga/src/apb_uart/src/slib_counter.vhd" \
+"../../../../../cva6/corev_apu/fpga/src/apb_uart/src/slib_edge_detect.vhd" \
+"../../../../../cva6/corev_apu/fpga/src/apb_uart/src/slib_fifo.vhd" \
+"../../../../../cva6/corev_apu/fpga/src/apb_uart/src/slib_input_filter.vhd" \
+"../../../../../cva6/corev_apu/fpga/src/apb_uart/src/slib_input_sync.vhd" \
+"../../../../../cva6/corev_apu/fpga/src/apb_uart/src/slib_mv_filter.vhd" \
+"../../../../../cva6/corev_apu/fpga/src/apb_uart/src/uart_baudgen.vhd" \
+"../../../../../cva6/corev_apu/fpga/src/apb_uart/src/uart_interrupt.vhd" \
+"../../../../../cva6/corev_apu/fpga/src/apb_uart/src/uart_receiver.vhd" \
+"../../../../../cva6/corev_apu/fpga/src/apb_uart/src/uart_transmitter.vhd" \
+
+# Do not sort compile order
+nosort
