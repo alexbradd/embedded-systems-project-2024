@@ -61,9 +61,9 @@ xlnx_axi_clock_converter_sc::xlnx_axi_clock_converter_sc(const sc_core::sc_modul
 
   // initialize module
     xsc::common_cpp::properties model_param_props;
-    model_param_props.addLong("C_AXI_ID_WIDTH", "1");
-    model_param_props.addLong("C_AXI_ADDR_WIDTH", "32");
-    model_param_props.addLong("C_AXI_DATA_WIDTH", "32");
+    model_param_props.addLong("C_AXI_ID_WIDTH", "5");
+    model_param_props.addLong("C_AXI_ADDR_WIDTH", "64");
+    model_param_props.addLong("C_AXI_DATA_WIDTH", "64");
     model_param_props.addLong("C_S_AXI_ACLK_RATIO", "1");
     model_param_props.addLong("C_M_AXI_ACLK_RATIO", "2");
     model_param_props.addLong("C_AXI_IS_ACLK_ASYNC", "1");

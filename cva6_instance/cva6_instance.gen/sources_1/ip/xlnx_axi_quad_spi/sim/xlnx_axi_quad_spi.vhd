@@ -84,13 +84,12 @@ ENTITY xlnx_axi_quad_spi IS
     io1_i : IN STD_LOGIC;
     io1_o : OUT STD_LOGIC;
     io1_t : OUT STD_LOGIC;
+    sck_i : IN STD_LOGIC;
+    sck_o : OUT STD_LOGIC;
+    sck_t : OUT STD_LOGIC;
     ss_i : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     ss_o : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
     ss_t : OUT STD_LOGIC;
-    cfgclk : OUT STD_LOGIC;
-    cfgmclk : OUT STD_LOGIC;
-    eos : OUT STD_LOGIC;
-    preq : OUT STD_LOGIC;
     ip2intc_irpt : OUT STD_LOGIC
   );
 END xlnx_axi_quad_spi;
@@ -240,9 +239,6 @@ ARCHITECTURE xlnx_axi_quad_spi_arch OF xlnx_axi_quad_spi IS
   END COMPONENT axi_quad_spi;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_INFO OF cfgclk: SIGNAL IS "xilinx.com:display_startup_io:startup_io:1.0 STARTUP_IO cfgclk";
-  ATTRIBUTE X_INTERFACE_INFO OF cfgmclk: SIGNAL IS "xilinx.com:display_startup_io:startup_io:1.0 STARTUP_IO cfgmclk";
-  ATTRIBUTE X_INTERFACE_INFO OF eos: SIGNAL IS "xilinx.com:display_startup_io:startup_io:1.0 STARTUP_IO eos";
   ATTRIBUTE X_INTERFACE_PARAMETER OF ext_spi_clk: SIGNAL IS "XIL_INTERFACENAME spi_clk, ASSOCIATED_BUSIF SPI_0, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF ext_spi_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 spi_clk CLK";
   ATTRIBUTE X_INTERFACE_PARAMETER OF io0_i: SIGNAL IS "XIL_INTERFACENAME SPI_0, BOARD.ASSOCIATED_PARAM QSPI_BOARD_INTERFACE";
@@ -254,7 +250,6 @@ ARCHITECTURE xlnx_axi_quad_spi_arch OF xlnx_axi_quad_spi IS
   ATTRIBUTE X_INTERFACE_INFO OF io1_t: SIGNAL IS "xilinx.com:interface:spi:1.0 SPI_0 IO1_T";
   ATTRIBUTE X_INTERFACE_PARAMETER OF ip2intc_irpt: SIGNAL IS "XIL_INTERFACENAME interrupt, SENSITIVITY EDGE_RISING, PORTWIDTH 1";
   ATTRIBUTE X_INTERFACE_INFO OF ip2intc_irpt: SIGNAL IS "xilinx.com:signal:interrupt:1.0 interrupt INTERRUPT";
-  ATTRIBUTE X_INTERFACE_INFO OF preq: SIGNAL IS "xilinx.com:display_startup_io:startup_io:1.0 STARTUP_IO preq";
   ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_aclk: SIGNAL IS "XIL_INTERFACENAME lite_clk, ASSOCIATED_BUSIF AXI_LITE, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 lite_clk CLK";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_araddr: SIGNAL IS "xilinx.com:interface:aximm:1.0 AXI_LITE ARADDR";
@@ -278,6 +273,9 @@ ARCHITECTURE xlnx_axi_quad_spi_arch OF xlnx_axi_quad_spi IS
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_wready: SIGNAL IS "xilinx.com:interface:aximm:1.0 AXI_LITE WREADY";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_wstrb: SIGNAL IS "xilinx.com:interface:aximm:1.0 AXI_LITE WSTRB";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_wvalid: SIGNAL IS "xilinx.com:interface:aximm:1.0 AXI_LITE WVALID";
+  ATTRIBUTE X_INTERFACE_INFO OF sck_i: SIGNAL IS "xilinx.com:interface:spi:1.0 SPI_0 SCK_I";
+  ATTRIBUTE X_INTERFACE_INFO OF sck_o: SIGNAL IS "xilinx.com:interface:spi:1.0 SPI_0 SCK_O";
+  ATTRIBUTE X_INTERFACE_INFO OF sck_t: SIGNAL IS "xilinx.com:interface:spi:1.0 SPI_0 SCK_T";
   ATTRIBUTE X_INTERFACE_INFO OF ss_i: SIGNAL IS "xilinx.com:interface:spi:1.0 SPI_0 SS_I";
   ATTRIBUTE X_INTERFACE_INFO OF ss_o: SIGNAL IS "xilinx.com:interface:spi:1.0 SPI_0 SS_O";
   ATTRIBUTE X_INTERFACE_INFO OF ss_t: SIGNAL IS "xilinx.com:interface:spi:1.0 SPI_0 SS_T";
@@ -295,14 +293,14 @@ BEGIN
       C_XIP_PERF_MODE => 1,
       C_BYTE_LEVEL_INTERRUPT_EN => 0,
       C_UC_FAMILY => 0,
-      C_FIFO_DEPTH => 16,
-      C_SCK_RATIO => 16,
+      C_FIFO_DEPTH => 256,
+      C_SCK_RATIO => 4,
       C_DUAL_QUAD_MODE => 0,
       C_NUM_SS_BITS => 1,
       C_NUM_TRANSFER_BITS => 8,
       C_NEW_SEQ_EN => 1,
       C_SPI_MODE => 0,
-      C_USE_STARTUP => 1,
+      C_USE_STARTUP => 0,
       C_USE_STARTUP_EXT => 0,
       C_SPI_MEMORY => 1,
       C_S_AXI_ADDR_WIDTH => 7,
@@ -375,15 +373,13 @@ BEGIN
       io2_1_i => '0',
       io3_1_i => '0',
       spisel => '1',
-      sck_i => '0',
+      sck_i => sck_i,
+      sck_o => sck_o,
+      sck_t => sck_t,
       ss_i => ss_i,
       ss_o => ss_o,
       ss_t => ss_t,
       ss_1_i => '0',
-      cfgclk => cfgclk,
-      cfgmclk => cfgmclk,
-      eos => eos,
-      preq => preq,
       clk => '0',
       gsr => '0',
       gts => '0',
