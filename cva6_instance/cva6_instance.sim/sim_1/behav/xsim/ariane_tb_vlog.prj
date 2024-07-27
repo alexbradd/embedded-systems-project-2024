@@ -10,7 +10,7 @@ sv xil_defaultlib "/home/bred/projects/embedded-systems-project-2024/cva6/vendor
 "../../../../../cva6/corev_apu/tb/common/SimJTAG.sv" \
 "../../../../../cva6/vendor/pulp-platform/fpga-support/rtl/SyncDpRam.sv" \
 "../../../../../cva6/core/include/config_pkg.sv" \
-"../../../../../cva6/core/include/cv32a6_embedded_config_pkg.sv" \
+"../../../../../cva6/core/include/cv32a6_ima_sv32_fpga_config_pkg.sv" \
 "../../../../../cva6/core/include/riscv_pkg.sv" \
 "../../../../../cva6/core/include/ariane_pkg.sv" \
 "../../../../../cva6/core/cvfpu/src/fpnew_pkg.sv" \
@@ -81,9 +81,10 @@ sv xil_defaultlib "/home/bred/projects/embedded-systems-project-2024/cva6/vendor
 "../../../../../cva6/core/cva6_fifo_v3.sv" \
 "../../../../../cva6/core/cache_subsystem/hpdcache/rtl/src/hpdcache_pkg.sv" \
 "../../../../../cva6/core/cache_subsystem/cva6_hpdcache_if_adapter.sv" \
-"../../../../../cva6/core/cache_subsystem/hpdcache/rtl/src/hwpf_stride/hwpf_stride_pkg.sv" \
 "../../../../../cva6/core/cache_subsystem/cva6_hpdcache_subsystem.sv" \
 "../../../../../cva6/core/cache_subsystem/cva6_hpdcache_subsystem_axi_arbiter.sv" \
+"../../../../../cva6/core/cache_subsystem/hpdcache/rtl/src/hwpf_stride/hwpf_stride_pkg.sv" \
+"../../../../../cva6/core/cache_subsystem/cva6_hpdcache_wrapper.sv" \
 "../../../../../cva6/core/cache_subsystem/cva6_icache.sv" \
 "../../../../../cva6/core/cache_subsystem/cva6_icache_axi_wrapper.sv" \
 "../../../../../cva6/core/cva6_mmu/cva6_mmu.sv" \
@@ -212,6 +213,7 @@ sv xil_defaultlib "/home/bred/projects/embedded-systems-project-2024/cva6/vendor
 "../../../../../cva6/vendor/pulp-platform/common_cells/src/spill_register.sv" \
 "../../../../../cva6/vendor/pulp-platform/common_cells/src/spill_register_flushable.sv" \
 "../../../../../cva6/common/local/util/sram.sv" \
+"../../../../../cva6/common/local/util/sram_cache.sv" \
 "../../../../../cva6/core/cache_subsystem/std_cache_subsystem.sv" \
 "../../../../../cva6/core/cache_subsystem/std_nbdcache.sv" \
 "../../../../../cva6/core/store_buffer.sv" \
@@ -226,6 +228,7 @@ sv xil_defaultlib "/home/bred/projects/embedded-systems-project-2024/cva6/vendor
 "../../../../../cva6/vendor/pulp-platform/tech_cells_generic/src/rtl/tc_clk.sv" \
 "../../../../../cva6/vendor/pulp-platform/tech_cells_generic/src/rtl/tc_sram.sv" \
 "../../../../../cva6/common/local/util/tc_sram_wrapper.sv" \
+"../../../../../cva6/common/local/util/tc_sram_wrapper_cache_techno.sv" \
 "../../../../../cva6/corev_apu/fpga/src/apb_timer/timer.sv" \
 "../../../../../cva6/corev_apu/tb/common/uart.sv" \
 "../../../../../cva6/vendor/pulp-platform/common_cells/src/unread.sv" \
