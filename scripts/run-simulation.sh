@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 source $ROOT/.venv/bin/activate
 source $ROOT/cva6/verif/setup-env.sh
 
