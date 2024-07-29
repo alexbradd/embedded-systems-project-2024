@@ -1,3 +1,7 @@
+build/
+.venv/
+
+
 ### Taken from https://github.com/github/gitignore/blob/main/community/Xilinx.gitignore
 
 # gitignore template for Xilinx Vivado Design Suite
