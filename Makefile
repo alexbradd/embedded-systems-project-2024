@@ -10,23 +10,21 @@ RISCV      := $(CVA6_TOOLS)/toolchain
 SPIKE      := $(CVA6_TOOLS)/spike
 VERILATOR  := $(CVA6_TOOLS)/verilator
 
-sim: $(RISCV) $(VERILATOR) $(SPIKE) $(LINUX_O) $(root)/.venv
+tools: | $(RISCV) $(VERILATOR) $(LINUX_O) $(root)/.venv
+
+sim: | tools
 	ROOT=$(root) RISCV=$(RISCV) LINUX_O=$(LINUX_O) bash $(root)/scripts/run-simulation.sh
 
-$(RISCV): $(CVA6_TOOLS)
+$(RISCV): | $(CVA6_TOOLS)
 	@echo "#### Building RISCV compiler toolchain"
 	@NUM_JOBS=$(NUM_JOBS) ROOT=$(root) RISCV=$(RISCV) bash $(root)/scripts/setup-toolchain.sh
 
-$(SPIKE): $(CVA6_TOOLS) $(VERILATOR)
-	@echo "#### Building SPIKE"
-	@NUM_JOBS=$(NUM_JOBS) RISCV=$(RISCV) bash $(root)/cva6/verif/regress/install-spike.sh
+$(VERILATOR): | $(CVA6_TOOLS)
+	@echo "#### Building Verilator and SPIKE"
+	NUM_JOBS=$(NUM_JOBS) RISCV=$(RISCV) ROOT=$(root) VERILATOR_INSTALL_DIR=$(VERILATOR) \
+					 bash $(root)/scripts/setup-spike-verilator.sh
 
-$(VERILATOR): $(CVA6_TOOLS)
-	@echo "#### Building Verilator"
-	@NUM_JOBS=$(NUM_JOBS) RISCV=$(RISCV) VERILATOR_INSTALL_DIR=$(VERILATOR) \
-					 bash $(root)/cva6/verif/regress/install-verilator.sh
-
-$(LINUX_O): $(root)/cva6-sdk $(root)/build
+$(LINUX_O): | $(root)/cva6-sdk $(root)/build
 	@echo "#### Building Linux image"
 	cd $(root)/cva6-sdk && $(MAKE) -j$(NUM_JOBS) vmlinux
 	cp $(root)/cva6-sdk/install64/vmlinux $(LINUX_O)
@@ -34,31 +32,31 @@ $(LINUX_O): $(root)/cva6-sdk $(root)/build
 $(root)/.venv:
 	@echo "#### Setting python venv"
 	python3 -m venv $(root)/.venv
-	ROOT=$(root) bash scripts/setup-venv.sh
+	ROOT=$(root) bash $(root)/scripts/setup-venv.sh
 
 $(root)/build $(CVA6_TOOLS):
 	mkdir -p $@
 
-clean-spike:
+clean-spike-verilator:
 	rm -rf $(SPIKE) || true
-
-clean-verilator:
 	rm -rf $(VERILATOR) || true
 
 clean-gcc:
 	rm -rf $(RISCV) || true
 	rm -rf $(root)/cva6/util/gcc-toolchain-builder/src || true
 
+clean-venv:
+	rm -rf $(root)/.venv || true
+
+clean-cva6: clean-spike-verilator clean-gcc clean-venv
+	RISCV=$(RISCV) make -C $(root)/cva6 clean
+
 clean-linux:
 	make -C $(root)/cva6-sdk clean
 	rm -f $(LINUX_O) || true
 
-clean-venv:
-	rm -rf $(root)/.venv || true
+clean: clean-cva6 clean-linux
 
-clean: clean-spike clean-verilator clean-gcc clean-linux clean-venv
-	RISCV=$(RISCV) make -C $(root)/cva6 clean
-
-.PHONY: clean clean-spike clean-verilator clean-gcc clean-linux clean-venv sim
+.PHONY: sim tools clean-spike-verilator clean-gcc clean-venv clean-cva6 clean-linux clean
 
 .NOTPARALLEL:
