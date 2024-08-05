@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (lin64) Build 4126759 Thu Feb  8 23:52:05 MST 2024
-// Date        : Fri May 24 21:57:07 2024
+// Date        : Mon Aug  5 19:07:34 2024
 // Host        : spicy-brick running 64-bit unknown
-// Command     : write_verilog -force -mode funcsim
-//               /home/bred/projects/embedded-systems-project-2024/cva6_instance/cva6_instance.gen/sources_1/ip/clk_wiz/clk_wiz_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top clk_wiz -prefix
+//               clk_wiz_ clk_wiz_sim_netlist.v
 // Design      : clk_wiz
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -35,7 +35,7 @@ module clk_wiz
   wire locked;
   wire resetn;
 
-  clk_wiz_clk_wiz inst
+  clk_wiz_clk_wiz_clk_wiz inst
        (.clk_100mhz(clk_100mhz),
         .clk_200mhz(clk_200mhz),
         .clk_50mhz(clk_50mhz),
@@ -44,7 +44,7 @@ module clk_wiz
         .resetn(resetn));
 endmodule
 
-module clk_wiz_clk_wiz
+module clk_wiz_clk_wiz_clk_wiz
    (clk_50mhz,
     clk_100mhz,
     clk_200mhz,
@@ -114,20 +114,20 @@ module clk_wiz_clk_wiz
   (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT_F(10.000000),
+    .CLKFBOUT_MULT_F(29.375000),
     .CLKFBOUT_PHASE(0.000000),
     .CLKFBOUT_USE_FINE_PS("FALSE"),
-    .CLKIN1_PERIOD(10.000000),
+    .CLKIN1_PERIOD(12.308000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(20.000000),
+    .CLKOUT0_DIVIDE_F(23.875000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
-    .CLKOUT1_DIVIDE(10),
+    .CLKOUT1_DIVIDE(12),
     .CLKOUT1_DUTY_CYCLE(0.500000),
     .CLKOUT1_PHASE(0.000000),
     .CLKOUT1_USE_FINE_PS("FALSE"),
-    .CLKOUT2_DIVIDE(5),
+    .CLKOUT2_DIVIDE(6),
     .CLKOUT2_DUTY_CYCLE(0.500000),
     .CLKOUT2_PHASE(0.000000),
     .CLKOUT2_USE_FINE_PS("FALSE"),
@@ -149,7 +149,7 @@ module clk_wiz_clk_wiz
     .CLKOUT6_PHASE(0.000000),
     .CLKOUT6_USE_FINE_PS("FALSE"),
     .COMPENSATION("ZHOLD"),
-    .DIVCLK_DIVIDE(1),
+    .DIVCLK_DIVIDE(2),
     .IS_CLKINSEL_INVERTED(1'b0),
     .IS_PSEN_INVERTED(1'b0),
     .IS_PSINCDEC_INVERTED(1'b0),
