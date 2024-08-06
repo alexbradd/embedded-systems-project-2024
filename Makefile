@@ -37,6 +37,11 @@ $(root)/.venv:
 $(root)/build $(CVA6_TOOLS):
 	mkdir -p $@
 
+report: report/report.pdf
+
+report/report.pdf: report/report.tex report/img/*
+	cd report && pdflatex $(root)/$< && pdflatex $(root)/$<
+
 clean-spike-verilator:
 	rm -rf $(SPIKE) || true
 	rm -rf $(VERILATOR) || true
@@ -57,6 +62,6 @@ clean-linux:
 
 clean: clean-cva6 clean-linux
 
-.PHONY: sim tools clean-spike-verilator clean-gcc clean-venv clean-cva6 clean-linux clean
+.PHONY: sim tools report clean-spike-verilator clean-gcc clean-venv clean-cva6 clean-linux clean
 
 .NOTPARALLEL:
