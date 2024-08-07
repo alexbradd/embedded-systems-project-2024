@@ -18,6 +18,7 @@
     citecolor={blue!50!black},
     urlcolor={blue!80!black}
 }
+\usepackage{parskip}
 
 \title{Embedded Systems project report}
 \author{Alexandru Gabriel Bradatan}
@@ -57,13 +58,12 @@ This project has two main goals:
   \item Boot a Linux image on a simulated CVA6 testbench and execute some programs
 \end{enumerate}
 
-We are going to work on the latest release of the CVA6 core (5.1.0) and use
+We are going to work on the latest release of the CVA6 core (5.1.0), use
 Vivado 2023.2 as an IDE and synthesizer and a customized version of Verilator
 as a simulator.
 
 All artifacts of this project are available in \href{https://github.com/alexbradd/embedded-systems-project-2024}{this repository}
-together with instructions and scripts for cloning, opening the project in Vivado
-and starting a simulation.
+together with instructions.
 
 \subsection{CVA6 Instance}
 
@@ -86,7 +86,7 @@ has been chosen so that the memory has an input clock of 100MHz. The MIG IP
 outputs a clock signal (\texttt{ui\_clk}) with frequency $325 / 4 = 81.25$ MHz.
 This signal, in the code reassigned to \texttt{dram\_clk} for naming consistency
 with other DRAM-related signals, will be rescaled by the Clock Wizard Xilinx IP
-into other 2 clocks:
+into 2 other clocks:
 
 \begin{enumerate}
   \item A 200 MHz reference clock used by the DRAM
@@ -128,7 +128,7 @@ succeeds and results in the resource usage outlined in Table~\ref{synth-util}.
 \subsection{CVA6 Simulation}
 
 To have maximum compatibility with both the upstream Verilog code and any
-upstream scripts that may be needed, we have decided to use Verilog compiled
+upstream scripts that may be needed, we have decided to use Verilator compiled
 with the in-tree patches. The same logic will be applied to any other auxiliary
 tools required for simulation. Vivado has been excluded from the beginning as
 the simulator since it is not able to correctly parse some otherwise valid
@@ -149,7 +149,7 @@ provided by the main repo and the
 \href{https://github.com/openhwgroup/cva6-sdk}{SDK} repo. Invocation of the
 build scripts with the correct parameters has been automated by us with a
 Makefile. To compile all tools and images needed for simulation, one can execute
-simply execute \texttt{make tools}.
+\texttt{make tools}.
 
 Simulation is started by invoking an upstream provided Python script with the
 ELF image to run and the desired board configuration. As with compilation,
@@ -157,8 +157,7 @@ correct invocation has been implemented as a Make target: one can simply run
 \texttt{make sim} to start a simulation of the core running a Linux image.
 
 To connect to the simulated core, we can use OpenOCD with JTAG Remote BitBang.
-A simple OpenOCD configuration to connect to the core has been provided in the
-project repo.
+A simple OpenOCD script has been provided in the project repo.
 
 \section{Project Outcomes}
 
@@ -175,18 +174,21 @@ core running said image using Verilator.
 
 Unfortunately, we were not able to get a shell prompt through the simulated UART
 and execute programs. However, the simulation is working since we can run
-without errors until timeout and, by watching the utilization host of the host
+without errors until timeout and, by watching the utilization of the host
 CPU, we can see that something is being executed.
 
 Adding to the problems is the fact that we could not find any documentation for
 simulating a full OS image. This left us with only trial and error and reverse
 engineering. Due to time constraints on our part, we did the best we could with
-out knowledge and skills.
+our knowledge and skills. In the following, we will outline the main things we
+tried and various possibilities we considered.
 
-To connect to the core, we tried using OpenOCD with the simple configuration
-contained in the project repo. Once we tried to connect to it, the connection
-would be established but the whole thing would crash after some time (usually
-around a couple of minutes). The OpenOCD output is the following:
+To connect to the core, we tried using OpenOCD with the simple script contained
+in the project repo, which itself is an adaptation of an example one we found in
+\href{https://github.com/riscv-software-src/riscv-isa-sim?tab=readme-ov-file#debugging-with-gdb}{Spike's
+documentation}. Once we tried to connect to the core, the connection would be
+established but the whole thing would crash after some time (usually around a
+couple of minutes). The OpenOCD output up until the crash is the following:
 
 \begin{verbatim}
 Open On-Chip Debugger 0.12.0
@@ -217,14 +219,17 @@ Info : remote_bitbang interface quit
 
 We think that this may be caused by an incorrect configuration of OpenOCD or the
 testbench. This is very possible due to our lack of familiarity with these
-tools. It may also be that the image was built incorrectly, however we think
-that isn't the case since we used the official SDK with the default options and
-without any modification.
+tools. It may also be that the image was built incorrectly, however we don't
+think that is the case since we used the official SDK with the default options
+without any modification. Another possibility may be that OpenOCD is simply not
+supported. We do not think that's the case since OpenOCD connects just fine.
+Moreover, the Verilator logs explicitly output a port to which we can attach
+OpenOCD.
 
-Another possibility may be that OpenOCD is not supported and the UART would use
-the same TTY as the simulation script for communication. This seems not to be
-the case because even after waiting for several minutes, the scripts output
-doesn't display anything other some debug information related to invocation
-arguments. To be sure, we would need to reverse the whole simulation script.
+We also considered the simplest case: maybe the UART uses the same TTY as the
+simulation script. This seems not to be true because even after waiting for
+several minutes, the script's output doesn't display anything other than some
+debug information and doesn't accept input. To be sure, however, we would need
+to reverse the simulation script.
 
 \end{document}
